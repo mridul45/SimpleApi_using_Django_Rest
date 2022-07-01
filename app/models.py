@@ -6,7 +6,7 @@ import uuid
 class BaseModel(models.Model):
 
     uid = models.UUIDField(primary_key=True,editable=False,default=uuid.uuid4)
-    created_at = models.DateField(auto_created=True)
+    created_at = models.DateField(auto_now=True)
     updated_at = models.DateField(auto_now_add=True)
 
     class Meta:

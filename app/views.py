@@ -42,6 +42,23 @@ def post_todo(request):
     
     try:
         data = request.data
+        serializer = TodoSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({
+            'status':True,
+            'message':'Success Operation',
+            'data':serializer.data
+        })
+        
+        
+        
+        return Response({
+            'status':False,
+            'message':'invalid data',
+            'data':serializer.errors
+        })
+
         print(data)
         return Response({
             'status':True,
